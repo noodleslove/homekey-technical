@@ -71,12 +71,7 @@ const Header: React.FC = () => {
                 icon={'solar:sun-bold'}
                 width={32}
                 height={32}
-                className={`dark:hidden block ${isHomepage
-                  ? sticky
-                    ? 'text-dark'
-                    : 'text-white'
-                  : 'text-dark'
-                  }`}
+                className={`dark:hidden block text-dark`}
               />
               <Icon
                 icon={'solar:moon-bold'}
@@ -86,12 +81,7 @@ const Header: React.FC = () => {
               />
             </button>
             <div className={`hidden md:block`}>
-              <Link href='#' className={`text-base text-inherit flex items-center gap-2 border-r pr-6 ${isHomepage
-                ? sticky
-                  ? 'text-dark dark:text-white hover:text-primary border-dark dark:border-white'
-                  : 'text-white hover:text-primary'
-                : 'text-dark hover:text-primary'
-                }`}
+              <Link href='#' className={`text-base text-inherit flex items-center gap-2 border-r pr-6 text-dark dark:text-white hover:text-primary border-dark dark:border-white`}
               >
                 <Icon icon={'ph:phone-bold'} width={24} height={24} />
                 +1-212-456-789
@@ -100,12 +90,7 @@ const Header: React.FC = () => {
             <div>
               <button
                 onClick={() => setNavbarOpen(!navbarOpen)}
-                className={`flex items-center gap-3 p-2 sm:px-5 sm:py-3 rounded-full font-semibold hover:cursor-pointer border ${isHomepage
-                  ? sticky
-                    ? 'text-white bg-dark dark:bg-white dark:text-dark dark:hover:text-white dark:hover:bg-dark hover:text-dark hover:bg-white border-dark dark:border-white'
-                    : 'text-dark bg-white dark:text-dark hover:bg-transparent hover:text-white border-white'
-                  : 'bg-dark text-white hover:bg-transparent hover:text-dark dark:bg-white dark:text-dark dark:hover:bg-transparent dark:hover:text-white duration-300'
-                  }`}
+                className={`flex items-center gap-3 p-2 sm:px-5 sm:py-3 rounded-full font-semibold hover:cursor-pointer border bg-dark text-white dark:bg-white dark:text-dark dark:hover:bg-dark dark:hover:text-white hover:bg-white hover:text-dark border-dark dark:border-white duration-300`}
                 aria-label='Toggle mobile menu'>
                 <span>
                   <Icon icon={'ph:list'} width={24} height={24} />
