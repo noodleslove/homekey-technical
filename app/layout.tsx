@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import Header from "@/components/Header";
 
 const font = Bricolage_Grotesque({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
           enableSystem={true}
           defaultTheme="light"
         >
+          <Header />
           {children}
         </ThemeProvider>
       </body>
