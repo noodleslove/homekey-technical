@@ -9,6 +9,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import PropertyIntelligence from '@/components/PropertyIntelligence';
 import AgentChatbot from '@/components/AgentChatbot';
+import RiskHeatmap from '@/components/RiskHeatmap';
 
 export default function Details() {
     const { slug } = useParams();
@@ -166,6 +167,15 @@ export default function Details() {
                             />
                         </div>
 
+                        {/* Risk Heatmap */}
+                        <div className="py-8 mt-8 border-t border-dark/5 dark:border-white/15">
+                            <RiskHeatmap
+                                propertyName={item?.name || "Property"}
+                                location={item?.location || "Location not available"}
+                                aggregateRiskScore={Math.round(100 - (intelligenceData.alerts.length * 15) + (intelligenceData.confidenceScore * 0.3))}
+                            />
+                        </div>
+
                         <div className="py-8 mt-8 border-t border-dark/5 dark:border-white/15">
                             <h3 className='text-xl font-medium'>What this property offers</h3>
                             <div className="grid grid-cols-3 mt-5 gap-6">
@@ -196,7 +206,7 @@ export default function Details() {
                             </div>
                         </div>
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d938779.7831767448!2d71.05098621661072!3d23.20271516446136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e82dd003ff749%3A0x359e803f537cea25!2sGANESH%20GLORY%2C%20Gota%2C%20Ahmedabad%2C%20Gujarat%20382481!5e0!3m2!1sen!2sin!4v1715676641521!5m2!1sen!2sin"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.2!2d-122.1430!3d37.4419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fbb3c5e3b6ad5%3A0x7c8a7e5e8e8e8e8e!2sPalo%20Alto%2C%20CA!5e0!3m2!1sen!2sus!4v1715676641521!5m2!1sen!2sus"
                             width="1114" height="400" loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="rounded-2xl w-full">
                         </iframe>
                     </div>
