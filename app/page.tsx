@@ -1,9 +1,8 @@
 import HeroSub from "@/components/HeroSub";
 import PropertiesListing from "@/components/PropertiesList";
-import React from "react";
 import { Metadata } from "next";
 export const metadata: Metadata = {
-    title: "Property List | Homely",
+    title: "Property List | Homekey",
 };
 
 const page = () => {
