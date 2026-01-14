@@ -4,13 +4,17 @@ import { propertyHomes } from '@/app/api/propertyHomes';
 import { useParams } from "next/navigation";
 import { Icon } from '@iconify/react';
 import { testimonials } from '@/app/api/testimonial';
+import { getPropertyIntelligence, defaultPropertyIntelligence } from '@/app/api/propertyIntelligence';
 import Link from 'next/link';
 import Image from 'next/image';
+import PropertyIntelligence from '@/components/PropertyIntelligence';
 
 export default function Details() {
     const { slug } = useParams();
 
     const item = propertyHomes.find((item) => item.slug === slug);
+    const intelligenceData = getPropertyIntelligence(slug as string) || { slug: slug as string, ...defaultPropertyIntelligence };
+    
     return (
         <section className="!pt-44 pb-20 relative" >
             <div className="container mx-auto max-w-8xl px-5 2xl:px-0">
@@ -146,6 +150,21 @@ export default function Details() {
                                 and two fully equipped bar spaces.
                             </p>
                         </div>
+
+                        {/* Property Intelligence Dashboard */}
+                        <div className="py-8 mt-8 border-t border-dark/5 dark:border-white/15">
+                            <PropertyIntelligence
+                                address={item?.location || "Address not available"}
+                                confidenceScore={intelligenceData.confidenceScore}
+                                dataCategories={intelligenceData.dataCategories}
+                                alerts={intelligenceData.alerts}
+                                lastUpdated={intelligenceData.lastUpdated}
+                                dataSources={intelligenceData.dataSources}
+                                titleStatus={intelligenceData.titleStatus}
+                                marketTrend={intelligenceData.marketTrend}
+                            />
+                        </div>
+
                         <div className="py-8 mt-8 border-t border-dark/5 dark:border-white/15">
                             <h3 className='text-xl font-medium'>What this property offers</h3>
                             <div className="grid grid-cols-3 mt-5 gap-6">
