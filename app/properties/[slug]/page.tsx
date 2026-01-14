@@ -8,6 +8,7 @@ import { getPropertyIntelligence, defaultPropertyIntelligence } from '@/app/api/
 import Link from 'next/link';
 import Image from 'next/image';
 import PropertyIntelligence from '@/components/PropertyIntelligence';
+import AgentChatbot from '@/components/AgentChatbot';
 
 export default function Details() {
     const { slug } = useParams();
@@ -228,6 +229,14 @@ export default function Details() {
                     </div>
                 </div>
             </div>
+
+            {/* Agent Chatbot */}
+            {item && (
+                <AgentChatbot
+                    property={item}
+                    intelligence={intelligenceData}
+                />
+            )}
         </section>
     );
 }
